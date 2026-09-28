@@ -1,33 +1,355 @@
-<!doctype html><html lang="en"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Sai Xerox & Stationers — Xerox, printing, stationery, projects and office supplies in Tukum, Chandrapur.">
-<title>Sai Xerox & Stationers | Tukum, Chandrapur</title><link rel="stylesheet" href="styles.css"></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sai Xerox & Stationers | Tukum, Chandrapur</title>
+<meta name="description" content="Sai Xerox & Stationers - Xerox, printing, stationery, projects and office supplies in Tukum, Chandrapur.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1b2a6b;--paper:#f7f9ff;--rule:#cfdaf3;--hi:#ffe45c;--red:#d9414a;--green:#1d7a46;--amber:#a86200;--text:#1d2340;--muted:#5a6285;
+--head:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;--body:'Hind','Segoe UI',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:400 17px/1.6 var(--body);color:var(--text);background:#fff}
+h1,h2,h3{font-family:var(--head);color:var(--ink);line-height:1.1;margin:0}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--ink)}
+.bar{display:flex;align-items:center;gap:16px;justify-content:space-between;padding:10px 20px;max-width:1080px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 18px var(--head);color:var(--ink)}
+.brand img{width:40px;height:40px;object-fit:contain}
+nav{display:flex;gap:18px;align-items:center;font-weight:500}
+nav a{text-decoration:none}nav a:hover{text-decoration:underline}
+.btn{display:inline-block;padding:10px 18px;border:2px solid var(--ink);border-radius:6px;font:600 16px var(--body);text-decoration:none;background:#fff;color:var(--ink);cursor:pointer}
+.btn.fill{background:var(--ink);color:#fff}.btn:hover{background:var(--hi);color:var(--ink)}
+.hero{background:repeating-linear-gradient(#fff 0 35px,var(--rule) 35px 36px);border-bottom:2px solid var(--ink);position:relative}
+.hero:before{content:"";position:absolute;left:clamp(14px,6vw,64px);top:0;bottom:0;width:2px;background:var(--red);opacity:.6}
+.hero .wrap{padding-top:72px;padding-bottom:72px}
+.hero h1{font-size:clamp(40px,8vw,84px);font-weight:800;max-width:11ch;background:linear-gradient(transparent 62%,var(--hi) 62% 92%,transparent 92%);display:inline}
+.hero p{max-width:34em;margin:24px 0;font-size:19px;background:#fff;display:inline-block;padding:2px 6px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:8px}
+.facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:34px;font-weight:600;color:var(--ink)}
+.facts span{background:#fff;padding:2px 6px}
+section{padding:64px 0}
+h2{font-size:clamp(28px,4.5vw,42px);margin-bottom:10px}
+.lead{color:var(--muted);margin:0 0 30px;max-width:40em}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.svc{border:2px solid var(--ink);border-radius:8px;padding:18px;background:var(--paper)}
+.svc h3{font-size:20px;margin-bottom:6px}.svc p{margin:0;color:var(--muted)}
+.rates{width:100%;max-width:640px;border-collapse:collapse;border:2px solid var(--ink);background:#fff;font-size:18px}
+.rates caption{caption-side:top;text-align:left;font:800 15px var(--head);background:var(--ink);color:#fff;padding:8px 14px;letter-spacing:.02em}
+.rates th,.rates td{padding:12px 14px;border-bottom:1px solid var(--rule);text-align:left}
+.rates th{font-weight:600;color:var(--muted);font-size:15px}
+.rates td:last-child,.rates th:last-child{text-align:right;font:800 20px var(--head);color:var(--ink);white-space:nowrap}
+.rates tr:nth-child(even) td{background:var(--paper)}
+#products{background:var(--paper);border-top:2px solid var(--ink);border-bottom:2px solid var(--ink)}
+.cat{all:unset;box-sizing:border-box;cursor:pointer;display:flex;gap:14px;align-items:center;padding:16px;border:2px solid var(--ink);border-radius:8px;background:#fff;box-shadow:4px 4px 0 var(--ink);transition:transform .12s,box-shadow .12s}
+.cat:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.cat:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+.cat .ic{font-size:30px;width:52px;height:52px;display:grid;place-items:center;background:var(--hi);border-radius:8px;flex:none}
+.cat b{display:block;font:700 18px var(--head);color:var(--ink)}
+.cat small{color:var(--muted);font-size:15px}
+dialog{width:min(960px,94vw);max-height:90vh;border:2px solid var(--ink);border-radius:10px;padding:0;background:#fff;color:var(--text)}
+dialog::backdrop{background:rgba(20,26,60,.6)}
+.dh{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;background:var(--hi);border-bottom:2px solid var(--ink)}
+.dh h3{font-size:24px}.dh button{font:600 16px var(--body);padding:6px 14px;border:2px solid var(--ink);background:#fff;border-radius:6px;cursor:pointer}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;padding:20px}
+.item{border:2px solid var(--rule);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;background:#fff}
+.grp{grid-column:1/-1;margin:8px 0 0;padding:6px 12px;font:800 18px var(--head);color:var(--ink);background:var(--hi);border-radius:6px}
+.grp:first-child{margin-top:0}
+.pic{aspect-ratio:4/3;background:var(--paper);display:grid;place-items:center;font-size:44px}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+.info{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.info b{font-family:var(--head);color:var(--ink);font-size:17px}.info span.d{color:var(--muted);font-size:15px}
+.st{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:14px;padding:2px 10px;border-radius:99px;border:1.5px solid;align-self:flex-start}
+.st:before{content:"";width:9px;height:9px;border-radius:50%;background:currentColor}
+.st.in{color:var(--green)}.st.low{color:var(--amber)}.st.out{color:var(--red)}
+.ask{margin-top:auto;font-size:15px;font-weight:600;color:var(--ink)}
+.add{margin-top:auto;font:600 15px var(--body);padding:8px 10px;border:2px solid var(--ink);border-radius:6px;background:var(--ink);color:#fff;cursor:pointer}
+.add:hover{background:var(--hi);color:var(--ink)}
+.add:disabled{background:#e6e8f0;border-color:#c5c9d8;color:#7a8099;cursor:not-allowed}
+.add+.ask{margin-top:0}
+.pr{font:800 18px var(--head);color:var(--ink)}
+.dhb{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+[hidden]{display:none!important}
+.cartfab{position:fixed;left:16px;bottom:16px;z-index:30;padding:14px 20px;border:2px solid #fff;border-radius:99px;background:var(--ink);color:#fff;font:700 17px var(--head);cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+#dcart{width:min(560px,94vw)}
+.clist{padding:12px 20px}
+.crow{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--rule)}
+.crow b{display:block;color:var(--ink)}.crow .d{color:var(--muted);font-size:15px}
+.qty{display:flex;align-items:center;gap:6px;flex:none}
+.qty button{font:600 16px var(--body);min-width:34px;height:34px;border:2px solid var(--ink);background:#fff;border-radius:6px;cursor:pointer;padding:0 8px}
+.qty span{min-width:22px;text-align:center;font-weight:600}
+.empty{color:var(--muted);margin:8px 0}
+.cform{padding:0 20px 20px;display:grid;gap:12px}
+.cform label{display:grid;gap:4px;font-weight:600;color:var(--ink)}
+.cform input,.cform textarea{font:400 16px var(--body);padding:10px;border:2px solid var(--ink);border-radius:6px;width:100%}
+.cform .hint{margin:0;color:var(--muted);font-size:15px}
+.cform .row{display:flex;gap:10px;flex-wrap:wrap}
+#ctotal{margin:0;font:800 20px var(--head);color:var(--ink)}
+.note{padding:0 20px 18px;color:var(--muted);font-size:15px;margin:0}
+.about{display:grid;gap:30px;grid-template-columns:1.4fr 1fr;align-items:center}
+.years{border:2px solid var(--ink);border-radius:8px;padding:28px;text-align:center;background:var(--hi)}
+.years b{display:block;font:800 64px var(--head);color:var(--ink)}
+.contact{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.contact a,.contact div{border:2px solid var(--ink);border-radius:8px;padding:18px;text-decoration:none;background:var(--paper)}
+.contact small{display:block;color:var(--muted)}.contact b{font-size:19px;color:var(--ink)}
+footer{background:var(--ink);color:#fff;padding:26px 0;text-align:center;font-size:15px}
+.wa{position:fixed;right:16px;bottom:16px;z-index:30;background:#1fa855;color:#fff;font:700 18px var(--head);width:56px;height:56px;border-radius:50%;display:grid;place-items:center;text-decoration:none;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+@media(max-width:700px){nav a.hide{display:none}.about{grid-template-columns:1fr}.hero .wrap{padding-top:48px;padding-bottom:48px}.hero:before{left:10px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
 <body>
-<header><div class="wrap nav"><a class="brand" href="#home"><img src="logo.webp"><span><b>Sai Xerox & Stationers</b><small>EST. 1998 · Tukum, Chandrapur</small></span></a>
-<nav><a href="#services">Services</a><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></nav><a class="call" href="tel:+919420137660">Call us</a></div></header>
-<main>
-<section class="hero" id="home"><div class="wrap hero-grid"><div><p class="eyebrow">TRUSTED SINCE 1998</p><h1>Print. Create.<br><em>Get it done.</em></h1>
-<p class="lead">Your one-stop destination for Xerox, printing, stationery, student projects and everyday office essentials in Tukum, Chandrapur.</p>
-<div class="actions"><a class="btn gold" href="https://wa.me/919420137660?text=Hello%20Sai%20Xerox%20%26%20Stationers%2C%20I%20would%20like%20to%20enquire." target="_blank">WhatsApp us ↗</a><a class="btn outline" href="https://www.google.com/maps/search/?api=1&query=Sai%20Xerox%20and%20Stationers%2C%20beside%20Khatri%20College%2C%20Tadoba%20Road%2C%20Tukum%2C%20Chandrapur" target="_blank">Get directions</a></div>
-<div class="stats"><div><b>1998</b><small>Established</small></div><div><b>8 AM–8:30 PM</b><small>Open daily</small></div><div><b>All-in-one</b><small>Everyday essentials</small></div></div></div>
-<div class="visual"><div class="logo-card"><small>SAI · PRINT · PAPER · STATIONERY</small><img src="logo.webp"><small>CHANDRAPUR · EST. 1998</small></div><div class="open"><i></i><b>Open daily</b><span>8:00 AM — 8:30 PM</span></div></div></div></section>
-<div class="marquee">XEROX　•　COLOUR PRINT　•　STATIONERY　•　PROJECTS　•　LAMINATION　•　OFFICE SUPPLIES　•　WHATSAPP PRINTING</div>
-<section class="section" id="services"><div class="wrap"><div class="heading"><div><p class="kicker">OUR SERVICES</p><h2>Everything you need,<br><span>under one roof.</span></h2></div><p>Convenient everyday services for students, families, professionals and offices.</p></div>
-<div class="grid services">
-<article><small>01</small><strong>▣</strong><h3>Xerox & Photocopy</h3><p>All types and sizes of Xerox and photocopy services.</p></article>
-<article><small>02</small><strong>✦</strong><h3>Colour Printing</h3><p>Colour prints for documents, projects and presentations.</p></article>
-<article><small>03</small><strong>⌁</strong><h3>WhatsApp & Email Printing</h3><p>Send files digitally and get them printed at the shop.</p></article>
-<article><small>04</small><strong>◇</strong><h3>Lamination</h3><p>Protect documents, certificates and project sheets.</p></article>
-<article><small>05</small><strong>✎</strong><h3>Project Materials</h3><p>Project items and essentials for school and college work.</p></article>
-<article><small>06</small><strong>□</strong><h3>Office Stationery</h3><p>Practical stationery materials for everyday office use.</p></article>
+<header><div class="bar">
+<a class="brand" href="#home"><img src="logo.webp" alt="" onerror="this.style.display='none'">Sai Xerox & Stationers</a>
+<nav><a class="hide" href="#services">Services</a><a href="#rates">Rates</a><a href="#products">Products</a><a class="hide" href="#about">About</a><a class="hide" href="#contact">Contact</a><a class="btn fill" href="tel:+919420137660">Call us</a></nav>
+</div></header>
+
+<main id="home">
+<div class="hero"><div class="wrap">
+<h1>Print. Create. Get it done.</h1><br>
+<p>Xerox, printing, stationery, student projects and everyday office essentials in Tukum, Chandrapur.</p>
+<div class="cta">
+<a class="btn fill" href="https://wa.me/919420137660?text=Hello%20Sai%20Xerox%20%26%20Stationers%2C%20I%20would%20like%20to%20enquire.">WhatsApp us</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Sai%20Xerox%20and%20Stationers%2C%20beside%20Khatri%20College%2C%20Tadoba%20Road%2C%20Tukum%2C%20Chandrapur">Get directions</a>
+<a class="btn" href="#products">See products in stock</a>
+</div>
+<div class="facts"><span>Since 1998</span><span>Open daily 8 AM to 8:30 PM</span></div>
+</div></div>
+
+<section id="services"><div class="wrap">
+<h2>Everything you need, under one roof</h2>
+<p class="lead">Everyday services for students, families, professionals and offices.</p>
+<div class="grid">
+<div class="svc"><h3>Xerox & Photocopy</h3><p>All types and sizes of Xerox and photocopy.</p></div>
+<div class="svc"><h3>Colour Printing</h3><p>Colour prints for documents, projects and presentations.</p></div>
+<div class="svc"><h3>WhatsApp & Email Printing</h3><p>Send your file digitally and collect the print at the shop.</p></div>
+<div class="svc"><h3>Lamination</h3><p>Protect documents, certificates and project sheets.</p></div>
+<div class="svc"><h3>Project Materials</h3><p>Items and essentials for school and college work.</p></div>
+<div class="svc"><h3>Office Stationery</h3><p>Practical stationery for everyday office use.</p></div>
 </div></div></section>
-<section class="products" id="products"><div class="wrap"><div class="heading light"><div><p class="kicker">SHOP ESSENTIALS</p><h2>Stock up on the<br><span>everyday essentials.</span></h2></div><p>School, college, home and office supplies — conveniently available in store.</p></div>
-<div class="grid product-grid"><article><small>01</small><b>Notebooks & Registers</b><span>Flat discount available</span></article><article><small>02</small><b>11th & 12th Practical Books</b><span>Student essentials</span></article><article><small>03</small><b>Paper Rim & Boxes</b><span>Available in store</span></article><article><small>04</small><b>General Stationery</b><span>Daily-use supplies</span></article><article><small>05</small><b>Writing & School Items</b><span>Pens and essentials</span></article><article><small>06</small><b>Office Materials</b><span>Workplace essentials</span></article><article><small>07</small><b>Project Items</b><span>School & college</span></article><article><small>08</small><b>Cold Drinks & Snacks</b><span>Quick refreshments</span></article></div></div></section>
-<section class="about" id="about"><div class="wrap about-grid"><div><p class="kicker">THE SAI STORY</p><h2>A local shop built around<br><span>everyday convenience.</span></h2><p>Established in 1998, Sai Xerox & Stationers serves customers in Tukum, Chandrapur with printing, Xerox, stationery, project materials and everyday essentials.</p><p>From a quick photocopy to college project work or office supplies, we bring useful services and products together in one place.</p><div class="heritage"><b>26+</b><span>years of service<br>since 1998</span></div></div><div class="about-logo"><img src="logo.webp"><small>PRINT · PAPER · STATIONERY</small></div></div></section>
-<section class="contact" id="contact"><div class="wrap contact-grid"><div><p class="kicker">VISIT THE STORE</p><h2>Need something?<br><span>Come say hello.</span></h2><div class="details">
-<a href="tel:+919420137660"><small>PHONE / WHATSAPP</small><b>+91 94201 37660</b></a>
-<a href="https://www.google.com/maps/search/?api=1&query=Sai%20Xerox%20and%20Stationers%2C%20beside%20Khatri%20College%2C%20Tadoba%20Road%2C%20Tukum%2C%20Chandrapur" target="_blank"><small>ADDRESS</small><b>Beside Khatri College, Tadoba Road, Tukum, Chandrapur</b></a>
-<div><small>OPENING HOURS</small><b>Every day · 8:00 AM — 8:30 PM</b></div></div></div>
-<div class="contact-card"><small>QUICK ENQUIRY</small><h3>Send us your requirement.</h3><p>For printing or stationery enquiries, message us directly on WhatsApp.</p><a class="btn gold full" href="https://wa.me/919420137660?text=Hello%20Sai%20Xerox%20%26%20Stationers%2C%20I%20need%20help%20with%20printing%2Fstationery." target="_blank">Start WhatsApp chat ↗</a><a class="btn dark full" href="tel:+919420137660">Call the shop</a></div></div></section>
-</main><footer><div class="wrap foot"><div><b>Sai Xerox & Stationers</b><span>EST. 1998 · Tukum, Chandrapur</span></div><div><span>+91 94201 37660</span><span>8:00 AM — 8:30 PM</span></div></div><div class="wrap copy">© <span id="year"></span> Sai Xerox & Stationers. All rights reserved.</div></footer>
-<a class="wa" href="https://wa.me/919420137660" target="_blank">W</a><script src="script.js"></script></body></html>
+
+<section id="rates"><div class="wrap">
+<h2>Rate board</h2>
+<p class="lead">Our current prices for Xerox, printing and lamination.</p>
+<table class="rates"><caption>NEW RATE BOARD</caption>
+<thead><tr><th scope="col">Particulars</th><th scope="col">Price</th></tr></thead>
+<tbody id="ratebody"></tbody></table>
+</div></section>
+
+<section id="products"><div class="wrap">
+<h2>Shop essentials</h2>
+<p class="lead">Tap a category to see the varieties we keep, with photos and current stock.</p>
+<div class="grid" id="cats"></div>
+</div></section>
+
+<section id="about"><div class="wrap about">
+<div><h2>A local shop built around everyday convenience</h2>
+<p>Established in 1998, Sai Xerox & Stationers serves customers in Tukum, Chandrapur with printing, Xerox, stationery, project materials and everyday essentials.</p>
+<p>From a quick photocopy to college project work or office supplies, you get useful services and products in one place.</p></div>
+<div class="years"><b id="yrs">28+</b>years of service</div>
+</div></section>
+
+<section id="contact" style="background:#fff;border-top:2px solid var(--ink)"><div class="wrap">
+<h2>Visit the store</h2>
+<p class="lead">Need something? Come say hello, or send your requirement on WhatsApp.</p>
+<div class="contact">
+<a href="tel:+919420137660"><small>Phone / WhatsApp</small><b>+91 94201 37660</b></a>
+<a href="https://www.google.com/maps/search/?api=1&query=Sai%20Xerox%20and%20Stationers%2C%20beside%20Khatri%20College%2C%20Tadoba%20Road%2C%20Tukum%2C%20Chandrapur"><small>Address</small><b>Beside Khatri College, Tadoba Road, Tukum, Chandrapur</b></a>
+<div><small>Opening hours</small><b>Every day, 8:00 AM to 8:30 PM</b></div>
+</div></div></section>
+</main>
+
+<footer>Sai Xerox & Stationers, Tukum, Chandrapur. &copy; <span id="yr"></span> All rights reserved.</footer>
+<a class="wa" href="https://wa.me/919420137660" aria-label="Chat on WhatsApp">WA</a>
+
+<dialog id="dlg" aria-labelledby="dt">
+<div class="dh"><h3 id="dt"></h3><div class="dhb"><button type="button" class="cartTop" hidden></button><button type="button" id="close">Close</button></div></div>
+<div class="items" id="items"></div>
+<p class="note">Stock is updated by the shop and can change during the day. Message us on WhatsApp to confirm before you visit.</p>
+</dialog>
+
+<dialog id="dcart" aria-labelledby="ct">
+<div class="dh"><h3 id="ct">Your order</h3><button type="button" id="cclose">Close</button></div>
+<div class="clist" id="clist"></div>
+<div class="cform">
+<p id="ctotal"></p>
+<label>Your name<input id="cname" autocomplete="name"></label>
+<label>Note (optional)<textarea id="cnote" rows="2" placeholder="Brand, colour, size or anything else"></textarea></label>
+<div class="row"><button type="button" class="btn fill" id="csend">Send order on WhatsApp</button><button type="button" class="btn" id="cclear">Clear order</button></div>
+<p class="hint">Your order opens in WhatsApp with the item list filled in. The shop will reply to confirm availability, price and how to pay.</p>
+</div>
+</dialog>
+<button type="button" class="cartfab" id="cartfab" hidden></button>
+
+<script>
+/* ============ EDIT YOUR PRODUCTS HERE ============
+   g (group heading, optional): put it on the first item of a group, e.g. price range
+   u (use, optional): where the item is used
+   p (price in rupees, optional): add p:20 to show a price and an order total
+   b (brands, optional): brands you stock - delete any you do not keep
+   s (stock): "in" = In stock, "low" = Few left, "out" = Out of stock
+   i (image): photo path like "images/notebook-single.jpg". Leave "" to show an icon instead.
+   d (note): short detail, optional. */
+var CATS=[
+{n:"Notebooks & Registers",e:"📓",note:"Flat discount available",items:[
+ {g:"Budget range: ₹10 to ₹40",n:"Pocket & memo notepads",d:"50-100 pages, A6 / A7",u:"Quick notes, lists, rough work",s:"in",i:""},
+ {n:"Thin school notebooks",d:"76-96 pages, small / king size",u:"Single line, 4 line, 2 line, square ruled homework",s:"in",i:""},
+ {n:"Graph books & maths pads",d:"28-32 pages, 1 mm / 2 mm grid",u:"School geometry and graph work",s:"in",i:""},
+ {n:"Basic drawing books",d:"32-36 pages, craft paper",u:"Colouring and drawing",s:"in",i:""},
+ {n:"Voucher books",d:"50 sets, carbon / duplicate",u:"Rent receipts, petty cash, debit slips",s:"in",i:""},
+ {g:"Mid range: ₹45 to ₹120",n:"A4 & king size long books",d:"140-172 pages, softbound",u:"High school and college lecture notes",s:"in",i:""},
+ {n:"Lab practical / project books",d:"74-140 pages, one-side ruled / interleaf",u:"Physics, chemistry, biology records",s:"in",i:""},
+ {n:"Spiral & wiro bound notebooks",d:"160-200 pages, A4 / B5",u:"Coaching classes, college rough work",s:"in",i:""},
+ {n:"Artist sketchbooks",d:"36-50 pages, A4 / wiro, 120-140 GSM",u:"Pencil sketching, poster colour",s:"in",i:""},
+ {n:"Duplicate / triplicate bill books",d:"100 sets, size 0 to 2",u:"Cash memos, challans, GST invoices",s:"in",i:""},
+ {n:"Single / 2-quire ruled registers",d:"144-192 pages, hardbound",u:"Bookkeeping, coaching attendance",s:"in",i:""},
+ {g:"Premium and heavy-duty: ₹130 to ₹350+",n:"Multi-subject spiral notebooks",d:"300-400 pages, index tabs, A4",u:"Full-semester college work, exam prep",s:"in",i:""},
+ {n:"Jumbo hardbound registers",d:"4-quire to 8-quire, 288-576 pages",u:"Office records, legal entries, stock ledgers",s:"in",i:""},
+ {n:"Attendance & despatch logs",d:"Full index, F/C hard cover",u:"Staff sign-in/out, inward-outward mail",s:"in",i:""},
+ {n:"Mixed-media & watercolour pads",d:"200-300 GSM, A3 / A4",u:"Art, architecture drafting, design work",s:"in",i:""},
+ {n:"Faux-leather diaries / planners",d:"192-300 pages, ribbon marker, elastic band",u:"Executive notes, gifts, journaling",s:"in",i:""}]},
+{n:"11th & 12th Practical Books",e:"🧪",note:"Student essentials",items:[
+ {n:"Physics practical book",d:"Class 11 and 12",s:"in",i:""},
+ {n:"Chemistry practical book",d:"Class 11 and 12",s:"in",i:""},
+ {n:"Biology practical book",d:"Class 11 and 12",s:"low",i:""},
+ {n:"Graph and drawing sheets",d:"Pack of sheets",s:"out",i:""}]},
+{n:"Paper Rim & Boxes",e:"📦",note:"Available in store",items:[
+ {n:"A4 paper rim",d:"500 sheets",s:"in",i:""},
+ {n:"A3 paper rim",d:"500 sheets",s:"low",i:""},
+ {n:"Legal size paper rim",d:"500 sheets",s:"in",i:""},
+ {n:"A4 paper box",d:"Box of 5 rims",s:"in",i:""}]},
+{n:"General Stationery",e:"✂️",note:"Daily-use supplies",items:[
+ {g:"Everyday essentials: ₹3 to ₹25",n:"Basic writing",d:"Ball pens, HB / 2B pencils, sharpeners, dust-free erasers",b:"Reynolds 045, Cello Gripper / Butterflow, Nataraj, Apsara",s:"in",i:""},
+ {n:"Adhesives & tapes",d:"Glue sticks (8g-15g), liquid gum bottles, clear cello tape (0.5 and 1 inch)",b:"Fevistick, Fevicol MR, Wonder 555",s:"in",i:""},
+ {n:"Desk fasteners",d:"Paper clips, binder clips (15mm / 19mm), push pins, brass paper pins, staples No. 10",b:"Kangaro, Omega",s:"in",i:""},
+ {n:"Basic geometry",d:"15 cm clear scales, protractors, set-squares",b:"Camlin, Doms",s:"in",i:""},
+ {n:"Paper accessories",d:"Sticky notes (flag strips / 2x3 inch pads), brown paper roll covers, ID tag lanyards",b:"Oddy, 3M Post-it",s:"in",i:""},
+ {g:"Academic and office utility: ₹30 to ₹120",n:"Gel, roller & marking pens",d:"Gel pens, rollerball pens, highlighters (packs of 4-5), whiteboard markers, permanent CD markers",b:"Pentel EnerGel, Pilot V5 / V7, Uni-ball Eye, Faber-Castell, Luxor",s:"in",i:""},
+ {n:"Clutch pencils & correction",d:"Clutch pencils (0.5 / 0.7 mm) with leads, correction tape pens, liquid whitener with diluent",b:"Camlin, Pentel, Kores",s:"in",i:""},
+ {n:"Filing & organisation",d:"L-folders, button folders, cobra spring files, 2-ring binder files, report display covers",b:"Solo, Worldone",s:"in",i:""},
+ {n:"Scissors & cutters",d:"Craft scissors (6-7 inch), snap-off paper cutter knives",b:"Kangaro, Munix",s:"in",i:""},
+ {n:"Desk tools",d:"Pocket staplers (No. 10), staple pin removers, small tape dispensers",b:"Kangaro No. 10, Oddy",s:"in",i:""},
+ {n:"Student maths tools",d:"30 cm steel / acrylic rulers, school geometry compass boxes",b:"Camlin Kokuyo, Classmate",s:"in",i:""},
+ {n:"Basic art supplies",d:"12 / 24 shade oil pastels, wax crayons, plastic crayons, poster colour sets (6 shades)",b:"Camel, Doms, Faber-Castell",s:"in",i:""},
+ {g:"Professional and premium: ₹130 to ₹450+",n:"Heavy-duty desk hardware",d:"Heavy-duty staplers (24/6), 2-hole heavy punch machines, large weighted tape dispensers",b:"Kangaro FL-12, DP-52, DP-600",s:"in",i:""},
+ {n:"Calculators & drafting",d:"8 to 12 digit desk calculators, scientific calculators (100MS / 991MS / 991CW), mini-drafters, roller scales",b:"Casio, Citizen, Omega",s:"in",i:""},
+ {n:"Specialty art media",d:"Brush pens (12-24 shades), acrylic tube sets, fine-liner sets (0.05 to 0.8 mm), canvas boards",b:"Camlin, Sakura Pigma Micron, Brustro",s:"in",i:""},
+ {n:"Presentation & display",d:"Magnetic whiteboards (1.5x2 ft / 2x3 ft), expanding file briefcases (12-24 pockets), clipboard portfolios",b:"Solo, Alkosign",s:"in",i:""},
+ {n:"Executive gift pens",d:"Matte metal rollerball and ballpoint pens in presentation cases",b:"Parker Vector / Jotter, Pierre Cardin",s:"in",i:""}]},
+{n:"Writing & School Items",e:"✏️",note:"Pens and essentials",items:[
+ {n:"Ball pens",d:"Blue, black, red",s:"in",i:""},
+ {n:"Pencils and erasers",d:"",s:"in",i:""},
+ {n:"Geometry box",d:"",s:"low",i:""},
+ {n:"Highlighters and markers",d:"",s:"out",i:""}]},
+{n:"Office Materials",e:"🗂️",note:"Workplace essentials",items:[
+ {n:"Envelopes",d:"Various sizes",s:"in",i:""},
+ {n:"Clip boards and clips",d:"",s:"in",i:""},
+ {n:"Stamp pads and ink",d:"",s:"low",i:""},
+ {n:"Carbon and plain files",d:"",s:"in",i:""}]},
+{n:"Project Items",e:"🎨",note:"School and college",items:[
+ {n:"Chart paper",d:"Assorted colours",s:"in",i:""},
+ {n:"Project files",d:"",s:"in",i:""},
+ {n:"Colours and brushes",d:"",s:"low",i:""},
+ {n:"Thermocol and craft items",d:"",s:"out",i:""}]},
+{n:"Cold Drinks & Snacks",e:"🥤",note:"Quick refreshments",items:[
+ {n:"Cold drinks",d:"",s:"in",i:""},
+ {n:"Biscuits and snacks",d:"",s:"in",i:""},
+ {n:"Water bottles",d:"",s:"low",i:""}]}
+];
+/* ============ END OF PRODUCT LIST ============ */
+
+/* ============ EDIT YOUR RATES HERE ============ */
+var RATES=[
+ ["A4 size Xerox",2],
+ ["Legal size Xerox",3],
+ ["Aadhaar / ID Xerox",3],
+ ["A3 size Xerox",5],
+ ["Single print (black & white)",5],
+ ["Colour print",10],
+ ["Lamination (A4 / Legal)",20]
+];
+document.getElementById("ratebody").innerHTML=RATES.map(function(r){return "<tr><td>"+r[0]+"</td><td>&#8377;"+r[1]+"</td></tr>"}).join("");
+/* ============ END OF RATES ============ */
+
+var LABEL={in:"In stock",low:"Few left",out:"Out of stock"};
+var cats=document.getElementById("cats"),dlg=document.getElementById("dlg");
+function esc(t){return String(t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+CATS.forEach(function(c,idx){
+ var b=document.createElement("button");b.type="button";b.className="cat";
+ var inStock=c.items.filter(function(x){return x.s!=="out"}).length;
+ b.innerHTML='<span class="ic" aria-hidden="true">'+c.e+'</span><span><b>'+esc(c.n)+'</b><small>'+esc(c.note||"")+' &middot; '+inStock+' of '+c.items.length+' available</small></span>';
+ b.onclick=function(){openCat(idx)};cats.appendChild(b);
+});
+function openCat(i){
+ var c=CATS[i];document.getElementById("dt").textContent=c.n;
+ document.getElementById("items").innerHTML=c.items.map(function(x,j){
+  var key=i+"-"+j;
+  var buy=x.s==="out"?'<button type="button" class="add" disabled>Out of stock</button>':'<button type="button" class="add" data-k="'+key+'">'+(CART[key]?"Add more ("+CART[key]+")":"Add to order")+'</button>';
+  var pic=x.i?'<img src="'+esc(x.i)+'" alt="'+esc(x.n)+'" loading="lazy" onerror="this.parentNode.textContent=\''+c.e+'\'">':c.e;
+  var msg=encodeURIComponent("Hello Sai Xerox & Stationers, is "+x.n+" available?");
+  return (x.g?'<h4 class="grp">'+esc(x.g)+'</h4>':'')+'<div class="item"><div class="pic">'+pic+'</div><div class="info"><b>'+esc(x.n)+'</b>'+(x.d?'<span class="d">'+esc(x.d)+'</span>':'')+(x.u?'<span class="d">'+esc(x.u)+'</span>':'')+(x.b?'<span class="d">Brands: '+esc(x.b)+'</span>':'')+
+  '<span class="st '+x.s+'">'+LABEL[x.s]+'</span>'+(x.p?'<span class="pr">&#8377;'+x.p+'</span>':'')+buy+'<a class="ask" href="https://wa.me/919420137660?text='+msg+'">Ask on WhatsApp</a></div></div>';
+ }).join("");
+ dlg.showModal();dlg.scrollTop=0;
+}
+document.getElementById("close").onclick=function(){dlg.close()};
+dlg.addEventListener("click",function(e){if(e.target===dlg)dlg.close()});
+/* ---- ORDER CART ---- */
+var CART={};try{CART=JSON.parse(localStorage.getItem("saiCart")||"{}")||{}}catch(e){CART={}}
+var dcart=document.getElementById("dcart"),fab=document.getElementById("cartfab");
+function ref(k){var p=k.split("-"),c=CATS[p[0]];return(c&&c.items[p[1]])?{c:c,x:c.items[p[1]]}:null}
+function liveKeys(){return Object.keys(CART).filter(function(k){return ref(k)&&CART[k]>0})}
+function refresh(){
+ var n=0;liveKeys().forEach(function(k){n+=CART[k]});
+ var t="Your order ("+n+")";
+ fab.hidden=!n;fab.textContent=t;
+ document.querySelectorAll(".cartTop").forEach(function(b){b.hidden=!n;b.textContent=t});
+ if(dcart.open)renderCart();
+}
+function saveCart(){try{localStorage.setItem("saiCart",JSON.stringify(CART))}catch(e){}refresh()}
+function renderCart(){
+ var keys=liveKeys(),tot=0,allP=true,list=document.getElementById("clist");
+ if(!keys.length){list.innerHTML='<p class="empty">Your order is empty. Open a product section and tap Add to order.</p>'}
+ else list.innerHTML=keys.map(function(k){var o=ref(k),q=CART[k];if(o.x.p){tot+=o.x.p*q}else{allP=false}
+  return '<div class="crow"><div><b>'+esc(o.x.n)+'</b><span class="d">'+esc(o.c.n)+(o.x.p?' &middot; &#8377;'+o.x.p+' each':'')+'</span></div><div class="qty"><button type="button" data-a="dec" data-k="'+k+'" aria-label="Fewer">-</button><span>'+q+'</span><button type="button" data-a="inc" data-k="'+k+'" aria-label="More">+</button><button type="button" data-a="rm" data-k="'+k+'">Remove</button></div></div>'}).join("");
+ document.getElementById("ctotal").textContent=!keys.length?"":(allP?"Total: \u20B9"+tot:"Price will be confirmed by the shop.");
+ document.getElementById("csend").disabled=!keys.length;
+}
+function openCart(){renderCart();dcart.showModal()}
+fab.onclick=openCart;
+document.querySelectorAll(".cartTop").forEach(function(b){b.onclick=openCart});
+document.getElementById("cclose").onclick=function(){dcart.close()};
+dcart.addEventListener("click",function(e){
+ if(e.target===dcart){dcart.close();return}
+ var b=e.target.closest("button[data-a]");if(!b)return;
+ var k=b.dataset.k,a=b.dataset.a;
+ if(a==="inc")CART[k]=(CART[k]||0)+1;
+ if(a==="dec")CART[k]=Math.max(0,(CART[k]||0)-1);
+ if(a==="rm"||!CART[k])delete CART[k];
+ saveCart();
+});
+document.getElementById("items").addEventListener("click",function(e){
+ var b=e.target.closest(".add");if(!b||b.disabled)return;
+ var k=b.dataset.k;CART[k]=(CART[k]||0)+1;saveCart();b.textContent="Added ("+CART[k]+")";
+});
+document.getElementById("cclear").onclick=function(){CART={};saveCart()};
+document.getElementById("csend").onclick=function(){
+ var keys=liveKeys();if(!keys.length)return;
+ var lines=keys.map(function(k,n){var o=ref(k);return (n+1)+". "+o.x.n+" ("+o.c.n+") x "+CART[k]});
+ var nm=document.getElementById("cname").value.trim(),nt=document.getElementById("cnote").value.trim();
+ var msg="Hello Sai Xerox & Stationers, I would like to order:\n"+lines.join("\n")+(nm?"\nName: "+nm:"")+(nt?"\nNote: "+nt:"")+"\nPlease confirm availability and price.";
+ window.open("https://wa.me/919420137660?text="+encodeURIComponent(msg),"_blank");
+};
+refresh();
+
+var y=new Date().getFullYear();
+document.getElementById("yr").textContent=y;
+document.getElementById("yrs").textContent=(y-1998)+"+";
+</script>
+</body>
+</html>
