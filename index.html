@@ -152,6 +152,7 @@ h2:after{display:none}
 .stars input:checked~label,.stars label:hover,.stars label:hover~label{color:var(--foil)}
 .stars input:focus-visible+label{outline:3px solid var(--foil)}
 #fstatus{margin:0;color:var(--green);font-weight:600}
+.avg{margin:0 0 22px;font-size:18px;color:var(--muted)}.avg b{font:600 48px var(--head);color:var(--ink);margin-right:8px}
 .rv{border-left:2px solid var(--foil);padding:4px 0 4px 18px;margin:0 0 22px}
 .rv .s{color:var(--foil);letter-spacing:2px}.rv p{margin:4px 0;font:500 22px/1.35 var(--head);color:var(--ink)}.rv small{color:var(--muted)}
 @media(max-width:800px){.fb{grid-template-columns:1fr;gap:36px}.hero .wrap{padding-top:120px}}
@@ -449,12 +450,21 @@ document.getElementById("csend").onclick=function(){
 refresh();
 
 /* ---- FEEDBACK ---- */
-/* To receive feedback automatically (email/dashboard), create a free form at formspree.io and paste its URL below.
-   Leave empty to send feedback through WhatsApp. */
-var FEEDBACK_ENDPOINT="";
-/* Reviews you choose to show publicly. Example: {n:"Rahul",r:5,t:"Fast service and fair prices."} */
+/* Paste your Google Apps Script web app URL below (setup steps are in feedback-setup.md).
+   While it is empty, feedback is sent to the shop on WhatsApp only. */
+var SHEET_URL="";
+/* Backup reviews shown when the sheet is not connected. Example: {n:"Rahul",r:5,t:"Fast service.",d:"12 Oct 2026"} */
 var REVIEWS=[];
-document.getElementById("wall").innerHTML=REVIEWS.length?REVIEWS.map(function(v){return '<div class="rv"><span class="s">'+"&#9733;".repeat(v.r)+'</span><p>'+esc(v.t)+'</p><small>'+esc(v.n)+'</small></div>'}).join(""):'<p class="lead" style="margin:0">Customer reviews will appear here. Be the first to share yours.</p>';
+function stars(n){n=Math.max(1,Math.min(5,Math.round(Number(n)||0)));return "&#9733;".repeat(n)}
+function showReviews(list){
+ var w=document.getElementById("wall");
+ if(!list||!list.length){w.innerHTML='<p class="lead" style="margin:0">Customer reviews will appear here. Be the first to share yours.</p>';return}
+ var sum=0;list.forEach(function(v){sum+=Number(v.r)||0});
+ w.innerHTML='<p class="avg"><b>'+(sum/list.length).toFixed(1)+'</b> out of 5 &middot; '+list.length+(list.length>1?' reviews':' review')+'</p>'+
+  list.map(function(v){return '<div class="rv"><span class="s">'+stars(v.r)+'</span><p>'+esc(v.t)+'</p><small>'+esc(v.n||"Customer")+(v.d?' &middot; '+esc(v.d):'')+'</small></div>'}).join("");
+}
+showReviews(REVIEWS);
+if(SHEET_URL)fetch(SHEET_URL).then(function(r){return r.json()}).then(function(l){if(Array.isArray(l)&&l.length)showReviews(l)}).catch(function(){});
 var fbf=document.getElementById("fbform"),fst=document.getElementById("fstatus");
 fbf.addEventListener("submit",function(e){
  e.preventDefault();
@@ -464,8 +474,8 @@ fbf.addEventListener("submit",function(e){
  var d={rating:r.value,about:document.getElementById("fabout").value,name:document.getElementById("fname").value.trim(),message:m};
  function wa(){var t="Feedback for Sai Xerox & Stationers\nRating: "+d.rating+"/5\nAbout: "+d.about+(d.name?"\nName: "+d.name:"")+"\nMessage: "+d.message;
   window.open("https://wa.me/919420137660?text="+encodeURIComponent(t),"_blank");fst.textContent="Thank you! Your feedback is ready in WhatsApp. Press send to deliver it."}
- function ok(){fst.textContent="Thank you for your feedback!";fbf.reset()}
- if(FEEDBACK_ENDPOINT){fetch(FEEDBACK_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).then(function(x){if(!x.ok)throw 0;ok()}).catch(wa)}else wa();
+ function ok(){fst.textContent="Thank you! Your feedback was received. It will appear here after the shop approves it.";fbf.reset()}
+ if(SHEET_URL){fetch(SHEET_URL,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(d)}).then(ok).catch(wa)}else wa();
 });
 var hd=document.querySelector("header");
 function sc(){hd.classList.toggle("solid",window.scrollY>60)}
